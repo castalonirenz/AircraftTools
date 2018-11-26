@@ -37,7 +37,7 @@ class ScanScreen extends Component {
 
     render() {
         return (
-            <QRCodeScannerr
+            <QRCodeScanner
                 showMarker={true}
                 onRead={this.onSuccess.bind(this)}
                 topContent={
