@@ -11,6 +11,7 @@
     "react-native-camera": "^1.4.3",
     "react-native-qrcode": "^0.2.7",
     "react-native-qrcode-scanner": "^1.1.0",
+    "react-native-responsive-fontsize": "^0.1.2",
     "react-navigation": "^2.18.2"
   }
 }
