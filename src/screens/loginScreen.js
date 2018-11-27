@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, KeyboardAvoidingView, ScrollView, Image } from 'react-native';
 import { globalStyle } from "../themes/globalStyle";
 import CustomButton from "../components/button";
 class loginScreen extends Component {
@@ -30,7 +30,14 @@ class loginScreen extends Component {
         return (
 
             <View style={globalStyle.container}>
-                <Text> Login </Text>
+                
+                <View>
+                <Image 
+                style={styles.logoStyle}
+                source={require('../assets/logo.png')}/>
+
+               
+                </View>
 
                 <KeyboardAvoidingView style={styles.textInputWrapper}>
                     <TextInput
@@ -78,6 +85,10 @@ const styles = StyleSheet.create({
      //   backgroundColor: "green",
         alignItems: 'center',
         justifyContent: "center"
+    },
+    logoStyle:{
+        minHeight: 200,
+        minWidth: 200
     }
 })
 
