@@ -15,10 +15,19 @@ import { RootStack } from './src/navigators/stackNavigator';
 
 export default class App extends Component {
   render() {
-    return <SwitchNavigator/>
+    return (
+      <View style={styles.container}>
+        <QRScanner/>
+      </View>
+    )
   }
 }
 
+const styles=StyleSheet.create({
+  container:{
+    flex: 1
+  }
+})
 const SwitchNavigator = createSwitchNavigator({
   Auth: RootStack
 
