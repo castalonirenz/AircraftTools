@@ -2,7 +2,7 @@ import {StyleSheet, View, TextInput, TouchableOpacity, Text, Platform} from 'rea
  
 import QRCode from 'react-native-qrcode';
  import React, {Component} from 'react';
-export default class App extends Component {
+export default class GeneratorScreen extends Component {
  
   constructor(){
  
@@ -47,7 +47,7 @@ export default class App extends Component {
  
         <QRCode
           value={this.state.Text_Holder_2}
-          size={250}
+          size={150}
           bgColor='#000'
           fgColor='#fff'/>
  

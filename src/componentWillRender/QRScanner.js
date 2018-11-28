@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import RF from "react-native-responsive-fontsize";
 import {
   Image,
   StyleSheet,
@@ -44,8 +44,10 @@ class ScanScreen extends Component {
     let TriggerButton;
     if (this.state.QR) {
       QRScanner = (
+        
         <QRCodeScanner
-        //   cameraStyle={{ height: 250, width: 250 }}
+          cameraStyle={styles.QRStyle}
+         
           reactivate={true}
           showMarker={true}
           onRead={this.onSuccess.bind(this)}
@@ -60,6 +62,7 @@ class ScanScreen extends Component {
             </View>
           }
         />
+        
       );
     } else {
       TriggerButton = (
@@ -73,7 +76,7 @@ class ScanScreen extends Component {
           <Text
             style={[styles.textBold, { fontWeight: "normal", fontSize: 25 }]}
           >
-            Start Scanning
+            Press Me
           </Text>
         </View>
       );
@@ -81,8 +84,9 @@ class ScanScreen extends Component {
 
     return (
       <View style={styles.container}>
-        {TriggerButton}
+       
         {QRScanner}
+        {TriggerButton}
       </View>
     );
   }
@@ -96,8 +100,8 @@ const styles = StyleSheet.create({
     color: "black"
   },
   imageDesign: {
-    height: 300,
-    width: 300
+    height: RF(30),
+    width: RF(30)
   },
   textBold: {
     fontWeight: "500",
@@ -116,11 +120,20 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   QRLogoWrapper: {
+   
     alignItems: "center"
   },
   buttomComponent:{
+      marginTop: "30%",
       width:"100%"
-  }
+  },
+  QRStyle:{
+    alignSelf: 'center',
+    height: 250,
+    width: 350,
+   
+  },
+ 
 });
 
 export default ScanScreen;

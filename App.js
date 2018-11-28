@@ -12,14 +12,11 @@ import QRGenerator from './src/componentWillRender/QRGenerator'
 import QRScanner from "./src/componentWillRender/QRScanner";
 import {createSwitchNavigator} from 'react-navigation'
 import { RootStack } from './src/navigators/stackNavigator';
+import { myTab } from "./src/navigators/tabNavigator";
 
 export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <QRScanner/>
-      </View>
-    )
+    return <SwitchNavigator/>
   }
 }
 
@@ -29,7 +26,7 @@ const styles=StyleSheet.create({
   }
 })
 const SwitchNavigator = createSwitchNavigator({
-  Auth: RootStack
+  Auth: myTab
 
 
 })
