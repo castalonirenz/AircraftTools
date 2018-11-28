@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import {
-  AppRegistry,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,6 +10,7 @@ import {
   View
 } from "react-native";
 import QRCodeScanner from "react-native-qrcode-scanner";
+import MyButton from '../components/button'
 
 class ScanScreen extends Component {
   state = {
@@ -18,16 +19,14 @@ class ScanScreen extends Component {
     trigger: false
   };
 
-  getData = () => {
+  closeQR = () => {
     this.setState({
-        QR: false
-    })
+      QR: false
+    });
   };
   onSuccess(e) {
     this.state.qrData = e.data;
     alert(this.state.qrData);
-  
-   
 
     // Linking
     //     .openURL(e.data)
@@ -43,34 +42,41 @@ class ScanScreen extends Component {
   render() {
     let QRScanner;
     let TriggerButton;
-    if(this.state.QR) {
-        QRScanner = (
-            <QRCodeScanner
-            reactivate={true}
-              showMarker={true}
-              onRead={this.onSuccess.bind(this)}
-              topContent={
-                <Text style={styles.centerText}>
-                  Start Scanning your QR Code
-                
-                </Text>
-              }
-              bottomContent={
-                <View>
-                  <TouchableOpacity style={styles.buttonTouchable}>
-                    <Text style={styles.buttonText}>OK. Got it!</Text>
-                  </TouchableOpacity>
-    
-                  <Button title="Get Data" onPress={this.getData} />
-                </View>
-              }
+    if (this.state.QR) {
+      QRScanner = (
+        <QRCodeScanner
+        //   cameraStyle={{ height: 250, width: 250 }}
+          reactivate={true}
+          showMarker={true}
+          onRead={this.onSuccess.bind(this)}
+          topContent={
+            <Text style={styles.centerText}>Start Scanning your QR Code</Text>
+          }
+          bottomContent={
+            <View style={styles.buttomComponent}>
+                <MyButton onPress={this.closeQR}>
+                    Close QR Scanner
+                </MyButton>
+            </View>
+          }
+        />
+      );
+    } else {
+      TriggerButton = (
+        <View style={styles.QRLogoWrapper}>
+          <TouchableOpacity onPress={this.enableQr}>
+            <Image
+              style={styles.imageDesign}
+              source={require("../assets/250th.png")}
             />
-         )
-    }
-    else{
-        TriggerButton=(
-            <Button title="Start Scanning" onPress={this.enableQr} />
-        )
+          </TouchableOpacity>
+          <Text
+            style={[styles.textBold, { fontWeight: "normal", fontSize: 25 }]}
+          >
+            Start Scanning
+          </Text>
+        </View>
+      );
     }
 
     return (
@@ -89,6 +95,10 @@ const styles = StyleSheet.create({
     padding: 32,
     color: "black"
   },
+  imageDesign: {
+    height: 300,
+    width: 300
+  },
   textBold: {
     fontWeight: "500",
     color: "#000"
@@ -104,6 +114,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  QRLogoWrapper: {
+    alignItems: "center"
+  },
+  buttomComponent:{
+      width:"100%"
   }
 });
 

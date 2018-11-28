@@ -11,7 +11,7 @@ const CustomizeButton = props => (
 
 const styles = StyleSheet.create({
   button: {
-    width: "80%",
+    
     height: RF(10),
     borderRadius: RF(20),
     backgroundColor: "#FF5A5F",
